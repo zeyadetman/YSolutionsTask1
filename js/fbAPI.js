@@ -47,12 +47,18 @@ function getInfo() {
     FB.api('/me', 'GET', {
         fields: 'first_name,last_name,age_range,birthday,name,id,education,hometown,location,email'
     }, function(response) {
-        console.log(document.getElementsByClassName('user-name').length);
+        //   console.log(document.getElementsByClassName('user-name').length);
+        setCookie('username', response.name);
+        setCookie('education', response.education);
+        setCookie('location', response.location);
         for (var x = 0; x < document.getElementsByClassName('user-name').length; x++) {
-            document.getElementsByClassName('user-name')[x].innerHTML = response.name;
+            console.log(checkCookie('username'));
+            document.getElementsByClassName('user-name')[x].innerHTML = checkCookie('username');
         }
-        document.getElementById('edu').innerHTML = response.education;
-        document.getElementById('loca').innerHTML = response.location;
+        console.log(checkCookie('education'));
+        console.log(checkCookie('location'));
+        document.getElementById('edu').innerHTML = checkCookie('education');
+        document.getElementById('loca').innerHTML = checkCookie('location');
     });
 }
 
@@ -60,4 +66,45 @@ function logout() {
     FB.logout(function(response) {
         // 'You are not logged into Facebook.';
     });
+}
+
+
+function setCookie(pro, val) {
+    var d = new Date();
+    d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = pro + '=' + val + ";" + expires + ";path=/";
+    //  console.log(document.cookie);
+}
+
+function getCookie(pro) {
+    //console.log(document.cookie);
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    //console.log(ca);
+    for (var i = 0; i < ca.length; i++) {
+        var x = '',
+            y = '';
+        var test = 1;
+        for (var j = 0; j < ca[i].length; j++) {
+            if (ca[i][j] != '=' && test == 1) {
+                x += ca[i][j];
+            } else if (ca[i][j] == '=') test = 0;
+            else {
+                y += ca[i][j];
+            }
+        }
+        x = x.replace(/ /g, '');
+        if (x == pro) { return y; }
+    }
+    return '';
+}
+
+function checkCookie(property) {
+    //console.log(property);
+    var user = getCookie(property);
+    if (user != "") {
+        return user;
+    } else
+        return '';
 }
