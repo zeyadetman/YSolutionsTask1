@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -31,6 +32,7 @@
     <!-- Main CSS
 	   	================================================== -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/updates.css">
     <!--[if lt IE 9]>
 	      <script src="js/html5shiv.min.js"></script>
 	      <script src="js/respond.min.js"></script>
@@ -78,14 +80,21 @@
                                         <div class="col-xs-6">
                                             <form>
                                                 <div class="form-group">
-                                                    <button id="signin" class="wow fadeIn btn btn-default btn-lg " data-wow-duration="6s" formaction="newsfeed.html" onclick="sending()">Sign in</button>
+                                                    <button type="button" id="signin" class="wow fadeIn btn btn-default btn-lg " data-wow-duration="6s" onclick="sending()">Sign in</button>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="col-xs-6 check">
-                                            <input type="checkbox" value="remeber"></input> <span>remember me</span>
                                         </div>
+                                        <div class="col-xs-14 link5">
+
+                                            <input type="checkbox" value="remeber"></input> <span>Remember me</span>
+                                            <br>
+                                            <a href="Reset-password.html">Forget password?</a>
+                                        </div>
+
                                         <div class="col-xs-7">
+
                                             <label>Or Log in with</label>
                                         </div>
                                         <div class="col-xs-5 link4">
@@ -93,10 +102,13 @@
                                             <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
                                             <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
                                         </div>
-                                        <div class="col-xs-12 link5">
-                                            <a href="Reset-password.html">Forget password?</a>
+
+                                        <div id="loginerror">
+                                            <p>No account found for this information. Retry, or <a href="contact-create-account.html"> Sign up for Sunbula.</a></p>
                                         </div>
                                     </form>
+
+
                                     <!--End Contact Form-->
                                 </div>
                             </div>
@@ -107,26 +119,11 @@
             </div>
         </div>
     </section>
+
     <div class="container">
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="display: none;" id="mmm"></button>
 
-        <!--modal-->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Enter the verification code</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>We sent verification code to your mail, check it.</p>
-                        <input type="text" class="form-control input-lg" id="verificationcode">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="checker()">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
     </div>
 </body>

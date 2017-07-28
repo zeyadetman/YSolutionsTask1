@@ -1,32 +1,39 @@
-function sending() {
+function signup() {
     var data = JSON.stringify({
-        "Email": document.getElementById('mail').value,
-        "Password": document.getElementById('password').value
+        "Name": document.getElementById('usrnm').value,
+        "Login_Type": "1",
+        "EMail": document.getElementById('mail').value,
+        "Password": document.getElementById('psw').value,
+        "CityID": "",
+        "ImgURL": "",
+        "FacebookID": "",
+        "MobileNumber": "",
+        "Gender": "",
+        "CategoryID": "c29d99dd-5eae-4317-81f9-aec7c0389514"
     });
+
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            setCookie('User_ID', JSON.parse(this.responseText)['User_ID']);
+            console.log(JSON.parse(this.responseText)['UserID']);
+            setCookie('UserID', JSON.parse(this.responseText)['UserID']);
             if (JSON.parse(this.responseText)['IsSuccess'] == true) {
-                if (JSON.parse(this.responseText)['Is_Verified'] == true) {
-                    document.getElementById('signin').click();
-                    document.location.replace('newsfeed.html');
-                } else {
-                    window.location.replace('/vercode.html');
-                }
+                window.location.replace('/vercode.html');
+
             } else {
-                document.getElementById('loginerror').style.display = "block";
+                document.getElementById('signuperror').style.display = 'block';
             }
         }
     });
 
-    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/User/Login");
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/User/Regesteration");
     xhr.setRequestHeader("content-type", "application/json");
+
     xhr.send(data);
 }
-//-----------------------------------
+
 function setCookie(pro, val) {
     var d = new Date();
     d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));

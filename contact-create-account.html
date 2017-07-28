@@ -33,6 +33,7 @@
     <!-- Main CSS
 	   	================================================== -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/updates.css">
     <!--[if lt IE 9]>
 	      <script src="js/html5shiv.min.js"></script>
 	      <script src="js/respond.min.js"></script>
@@ -82,15 +83,25 @@
                                         </div>
                                         <div class="col-xs-6 col-xs-offset-3">
                                             <p id="taken"></p>
-                                            <button type="button" class="btn btn-default btn-lg " onclick="takken()">Sign Up</button>
+                                            <button type="button" class="btn btn-default btn-lg " onclick="signup()">Sign Up</button>
+                                        </div>
+
+                                        <div id='signuperror'>
+                                            <p>This information is already registered. Want to <a href="/Log-in.html">login</a> or <a href="/Reset-password.html">recover your password</a>?</p>
                                         </div>
                                     </form>
                                     <!--End Contact Form-->
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
+            </div>
+            <div class="container">
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="display: none;" id="mmm"></button>
+
 
             </div>
         </div>
@@ -101,7 +112,7 @@
 <script src="js/jquery-1.12.1.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/wow.min.js"></script>
-<script src="js/loginapi.js"></script>
+<script src="js/regapi.js"></script>
 <script>
     new WOW().init();
 </script>

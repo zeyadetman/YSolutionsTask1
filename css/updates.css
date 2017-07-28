@@ -1,0 +1,20 @@
+#loginerror {
+    display: none;
+    padding: center;
+    padding: 10px 0 10px 0;
+    margin: 25% 0 0 0;
+}
+
+#signuperror {
+    display: none;
+    padding: 310px 0 0px 0;
+    margin: 0 0 0 0;
+}
+
+@media screen and (max-width: 990px) {
+    #signuperror {
+        display: none;
+        padding: 65px 0 0px 0;
+        margin: 0 0 0 0;
+    }
+}

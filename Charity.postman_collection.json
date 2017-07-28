@@ -1,0 +1,606 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Charity",
+		"_postman_id": "c3b90b2a-0b54-d58b-85ec-8c6ed3610c67",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Case",
+			"description": "",
+			"item": [
+				{
+					"name": "AddCause",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Case/AddCause",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Name\":\"testing\",\n  \"Amount\":\"6000\",\n    \"CategoryID\":\"c29d99dd-5eae-4317-81f9-aec7c0389514\",\n    \"EndDate\":\"4/25/2017\",\n     \"CauseDescription\":\"poor family starving \",\n      \"IMG\":\"kfauhipaufhpaioufn\",\n       \"status\":\"1\",\n       \"User_ID\":\"f8b6b2ea-1506-4142-957d-f77baa47f349\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "EditCause",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Case/EditCause",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CauseID\":\"4e762b2a-aff4-4345-8d93-0778f6cde9ee\",\n  \"Name\":\"Sick Pepole\",\n  \"Amount\":\"70000\",\n    \"CategoryID\":\"c29d99dd-5eae-4317-81f9-aec7c0389514\",\n    \"EndDate\":\"4/25/2017\",\n     \"CauseDescription\":\"poor family starving \",\n      \"IMG\":\"kfauhipaufhpaioufn\",\n       \"status\":\"1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCategories",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Category/GetAllCategories",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"User_ID\":\"8081c15c-4247-4c31-a2c6-569ed5996dd0\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCause",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Case/DeleteCause",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CauseID\":\"40d5a082-49a8-441e-9990-e5135388a5c4\",\n       \"ActionType\":\"1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Case",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Case/DeleteCause",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CauseID\":\"f2edaa45-3802-4b27-abe2-3b0ed281ff30\",\n       \"ActionType\":\"2\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Country And Cities",
+			"description": "",
+			"item": [
+				{
+					"name": "AllCountries",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Country/AllCountries",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "AllCities",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Country/AllCities",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CountryID\":\"9ffec365-09d9-40a7-bb8d-028d246f12d5\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Masseges",
+			"description": "",
+			"item": [
+				{
+					"name": "SendMassege",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Messeging/SendMassege",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"e072e137-93e4-4498-b16e-02c1495a5098\",\n  \"ToID\":\"c67ae14b-f9c2-4c55-8fd4-115b50faee17\",\n  \"MSGBody\":\"Heloo\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "RecieveMassege",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Messeging/RecieveMassege",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ThreadID\":\"811c0a95-7c05-4a11-a7d5-926656d191b4\",\n  \"MasgDate\":\"1/1/9999\",\n  \"User_ID\":\"8081c15c-4247-4c31-a2c6-569ed5996dd0\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Inbox",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Messeging/Inbox",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"8081c15c-4247-4c31-a2c6-569ed5996dd0\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Newsfeed",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/Newsfeed",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"8081c15c-4247-4c31-a2c6-569ed5996dd0\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Regesteration",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/Regesteration",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"Name\":\"tesst\",\n     \"Login_Type\":\"1\",\n     \"EMail\":\"tet@hotmail.com\",\n     \"Password\":\"12345\",\n     \"CityID\":\"67c91722-0118-4132-8d45-24916f3a05e8\",\n     \"ImgURL\":\"\",\n     \"TwitterID\":\"\",\n     \"MobileNumber\":\"\",\n     \"Gender\":\"Male\",\n     \"CategoryID\":\"c29d99dd-5eae-4317-81f9-aec7c0389514\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "VerfiedAccnt",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/VerfiedAccnt",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\" :\"87e1692b-201b-488c-8821-b558cb57568a\",\n  \"VerficationCode\":\"123456\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/Login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Email\":\"kazoki_656@yahoo.com\",\n  \"Password\":\"123456\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "EditProfile",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/EditProfile",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"UserID\":\"e5c9a05d-a72c-442c-8953-17de1cf36dd1\",\n  \"Name\":\"Mahmoud Yousef\",\n  \"Password\":\"147852\",\n  \"EMail\":\"mahmoud.yousef\",\n  \"MobileNumber\":\"011447858\",\n  \"Address\":\"67c91722-0118-4132-8d45-24916f3a05e8\",\n  \"Gender\":\"Male\",\n  \"InterestedCategory\":\"9e922468-fc99-4d4d-852c-185586d0e79a\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UserDetails",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/UserDetails",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"f8b6b2ea-1506-4142-957d-f77baa47f349\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ForgetPassword",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/ForgetPassword",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"EMail\":\"eagle_656@hotmail.com\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPassword",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/ResetPassword",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Email\":\"nourelzafarany@hotmail.com\",\n  \"Password\":\"65465\",\n    \"ConfirmPassword\":\"65465\",\n    \"VerficationCode\":\"123456789\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MakeReview",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/MakeReview",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ReviweeID\":\"be39394f-ec03-4b65-9316-526ba665f205\",\n  \"ReviewStars\":\"1\",\n  \"ReviewBody\":\"bad person he is a theif\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllReviews",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/GetAllReviews",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"be39394f-ec03-4b65-9316-526ba665f205\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Donation",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/Donation",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"e072e137-93e4-4498-b16e-02c1495a5098\",\n  \"CaseID\":\"0558e9ca-f9c7-4459-bff0-848e1d667fbc\",\n  \"DonationValue\":\"500\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Follow",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/Follow",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"a35434b5-1b02-4618-8c5f-5b9239a60965\",\n  \"FollowingID\":\"42e410d8-1205-4b46-8228-fe1fba366f70\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/Search",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"edb9165e-3852-4826-8832-48e928b80321\",\n    \"SearchWord\":\"ahmed\",\n  \"SearchType\":\"2\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UserMakeReport",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/UserMakeReport",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"ReportBody\":\"he is abad person very an d a theif\",\n    \"ReportName\":\"Ayman\",\n    \"ReportDate\":\"2/23/2017\",\n    \"ReportedPerson\":\"5975d586-e78a-4c30-9424-1f94d5cdbbab\",\n     \"ReporterPerson\": \"9629ba6e-7697-43d7-82b2-18d88a7952b4\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ListofFollowers",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Following/ListofFollowers",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"29fab372-37c8-4deb-a5ef-3ab8a23ae3ab\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "AddPicture",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/AddPicture?User_ID=42e410d8-1205-4b46-8228-fe1fba366f70",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UNFollow",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/User/UNFollow",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"a35434b5-1b02-4618-8c5f-5b9239a60965\",\n  \"UNFollowingID\":\"42e410d8-1205-4b46-8228-fe1fba366f70\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ListofFollowers",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Following/ListofFollowers",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"29fab372-37c8-4deb-a5ef-3ab8a23ae3ab\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ListofPepoleFollwing",
+					"request": {
+						"url": "yakensolution.cloudapp.net/Charity/Api/Following/ListofPepole",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"User_ID\":\"29fab372-37c8-4deb-a5ef-3ab8a23ae3ab\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
