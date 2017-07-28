@@ -1,4 +1,3 @@
-console.log(document.cookie);
 var ca = decodeURIComponent(document.cookie).split('=');
 var id = ca[1];
 
@@ -13,7 +12,6 @@ function checker() {
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            console.log(this.responseText);
             if (JSON.parse(this.responseText)['IsSuccess']) {
                 window.location.replace('/newsfeed.html');
             } else {

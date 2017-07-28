@@ -17,7 +17,6 @@ function signup() {
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            console.log(JSON.parse(this.responseText)['UserID']);
             setCookie('UserID', JSON.parse(this.responseText)['UserID']);
             if (JSON.parse(this.responseText)['IsSuccess'] == true) {
                 window.location.replace('/vercode.html');
