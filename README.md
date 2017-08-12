@@ -1,23 +1,23 @@
 # Sunbula.io
 
- [x]Followers API
+- [x] Followers API
 
- [x] Followers Design
+- [x] Followers Design
 
-[x] Following API
+- [x] Following API
 
-[x] Following Design
+- [x] Following Design
 
-[ ] Upload Cause
+- [ ] Upload Cause
 
-[ ] Forgot Password
+- [ ] Forgot Password
 
-[ ] Send mail
+- [ ] Send mail
 
-[ ] Search
+- [ ] Search
 
-[ ] Unfollow
+- [ ] Unfollow
 
-[ ] Twitter Log-in
+- [ ] Twitter Log-in
 
-[ ] Google+ Log-in
+- [ ] Google+ Log-in
