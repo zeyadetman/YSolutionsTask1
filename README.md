@@ -1,8 +1,8 @@
 # Sunbula.io
 
-[x] Followers API
+ [x]Followers API
 
-[x] Followers Design
+ [x] Followers Design
 
 [x] Following API
 
