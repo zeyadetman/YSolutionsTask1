@@ -31,3 +31,21 @@ function checker() {
 
     xhr.send(data);
 }
+
+//-----------------------------------
+function setCookie(pro, val) {
+    var d = new Date();
+    d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = pro + '=' + val + ";" + expires + ";path=/";
+}
+
+function getCookie(pro) {
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split('=');
+    return ca[1];
+}
+
+function deleteCookie(property) {
+    document.cookie = "User_ID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}

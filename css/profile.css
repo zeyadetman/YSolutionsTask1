@@ -1,0 +1,22 @@
+.profilesummary h5{
+    color:#f38907;
+    font-size:22px;
+    margin-left: 120px;
+}
+
+
+.profilesummary img{
+    float: left;
+    width:100px;
+    height:100px
+}
+
+.profilesummary{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: rgba(0,0,0,.6);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:20px;
+    border-radius: 10px;
+}

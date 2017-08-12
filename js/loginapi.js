@@ -8,12 +8,14 @@ function sending() {
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            setCookie('User_ID', JSON.parse(this.responseText)['User_ID']);
+            setCookie('UserID', JSON.parse(this.responseText)['User_ID']);
             if (JSON.parse(this.responseText)['IsSuccess'] == true) {
                 if (JSON.parse(this.responseText)['Is_Verified'] == true) {
+                    setCookie('Verified', JSON.parse(this.responseText)['Is_Verified']);
                     document.getElementById('signin').click();
                     document.location.replace('newsfeed.html');
                 } else {
+                    setCookie('Verified', JSON.parse(this.responseText)['Is_Verified']);
                     window.location.replace('/vercode.html');
                 }
             } else {

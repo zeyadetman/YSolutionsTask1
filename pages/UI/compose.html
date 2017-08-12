@@ -2,6 +2,10 @@
 <html>
 
 <head>
+    <script>
+        if (document.cookie == '')
+            document.location.replace('/Log-in.html');
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title> Compose Message</title>
@@ -289,10 +293,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
+
                     </ul>
                 </div>
             </nav>
