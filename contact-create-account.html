@@ -3,7 +3,31 @@
 
 <head>
     <script>
-        if (document.cookie != '')
+        var x = cookieJSON(document.cookie)['UserID'];
+        console.log(x);
+
+        function cookieJSON(x) {
+            var ca = decodeURIComponent(x).split('=');
+            var list = [];
+            for (var i = 0; i < ca.length; i++) {
+                if (!i % 2)
+                    list.push(ca[i]);
+                else {
+                    ca[i] = ca[i].split('; ');
+                    list.push(ca[i][0]);
+                    list.push(ca[i][1]);
+                }
+            }
+            var dic = [];
+            console.log(list);
+            for (var i = 0; i < list.length; i += 2) {
+                dic[list[i]] = list[i + 1];
+            }
+            console.log(dic['UserID']);
+            console.log(dic['Verified']);
+            return dic;
+        }
+        if (document.cookie != '' || x != '00000000-0000-0000-0000-000000000000')
             document.location.replace('/newsfeed.html');
     </script>
 

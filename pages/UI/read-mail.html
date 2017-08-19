@@ -3,6 +3,12 @@
 
 <head>
     <script>
+        function signout() {
+            document.cookie = "UserID=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "Verified=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            console.log(document.cookie);
+            document.location.replace('/Log-in.html');
+        }
         if (document.cookie == '')
             document.location.replace('/Log-in.html');
     </script>
@@ -279,7 +285,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="#" class="btn btn-default btn-flat" onclick="signout()">Sign out</a>
                                     </div>
                                 </li>
                             </ul>

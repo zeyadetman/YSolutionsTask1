@@ -2,6 +2,13 @@
 
 <head>
     <script>
+        function signout() {
+            document.cookie = "UserID=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "Verified=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            console.log(document.cookie);
+            document.location.replace('/Log-in.html');
+        }
+
         if (document.cookie == '')
             document.location.replace('/Log-in.html');
     </script>
@@ -10,10 +17,10 @@
     <title> My Profile</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -23,6 +30,7 @@
     <!-- Favicon
   ================================================== -->
     <link rel="shortcut icon" type="image/png" href="../../dist/img/favicon.png">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -283,7 +291,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="#" class="btn btn-default btn-flat" onclick="signout()">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -399,7 +407,7 @@
                                         <p class="pull-right followers-count"></p>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Following</b>    
+                                        <b>Following</b>
                                         <p class="pull-right following-count"></p>
                                     </li>
                                 </ul>
@@ -496,18 +504,25 @@
                             </ul>
                             <div class="tab-content col-md-12">
                                 <section class="tab-pane col-md-12" id="FollowingList">
-                                    <div class=" profilesummary col-md-12"><img src="https://www.thesun.co.uk/wp-content/uploads/2017/05/nintchdbpict000106283145.jpg" class="img-responsive img-circle img-bordered-sm center-block" style="width: 100px; height:100px">
-                                        <h5 class="followingnames">AA</h5>
+                                    <div class=" profilesummary col-md-4"><img src="https://www.thesun.co.uk/wp-content/uploads/2017/05/nintchdbpict000106283145.jpg" class="img-responsive img-circle img-bordered-sm center-block">
+                                        <h5 class="followingnames text-center">User Name</h5>
+                                        <p class="text-center">Address</p>
+                                        <div id="ck-button" class="center-block text-center">
+                                            <label class="center-block text-center">
+      <input class="center-block text-center" type="checkbox" value="1" id='ck-input' onclick="checker123()"><span class="center-block text-center" id="ck-span"></span>
+   </label>
+                                        </div>
+                                    </div>
+
+                                </section>
+
+
+                                <section class="tab-pane col-md-12 " id="FollowerList">
+                                    <div class=" profilesummary col-md-4"><img src="https://www.thesun.co.uk/wp-content/uploads/2017/05/nintchdbpict000106283145.jpg" class="img-responsive img-circle img-bordered-sm center-block">
+                                        <h5 class="followername text-center">Zeyad Etman</h5>
                                     </div>
                                 </section>
 
-                                
-                                    <section class="tab-pane col-md-12 " id="FollowerList">
-                                    <div class=" profilesummary col-md-12"><img src="https://www.thesun.co.uk/wp-content/uploads/2017/05/nintchdbpict000106283145.jpg" class="img-responsive img-circle img-bordered-sm center-block" style="width: 100px; height:100px">
-                                        <h5 class="followername">AA</h5>
-                                    </div>
-                                    </section>
-                             
                                 <div class="tab-pane active" id="activity">
                                     <!-- Post -->
                                     <div class="post">
@@ -1206,6 +1221,8 @@
     <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
     <!-- FastClick -->
     <script src="../../plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
@@ -1214,7 +1231,7 @@
     <script src="../../dist/js/demo.js"></script>
     <script src="../../js/mainalmain.js"></script>
     <script src="../../js/myprofile.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 
 
 </body>
