@@ -10,13 +10,15 @@
 
 - [ ] Upload Cause
 
-- [ ] Forgot Password
+- [x] Forgot Password
 
 - [ ] Send mail
 
 - [ ] Search
 
-- [ ] Unfollow
+- [x] Follow
+
+- [x] Unfollow
 
 - [ ] Twitter Log-in
 
