@@ -326,15 +326,30 @@
                     </div>
                 </div>
                 <!-- search form -->
-                <form action="#" method="get" class="sidebar-form">
+                <form action="search.html" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat" onclick="search()"><i class="fa fa-search"></i>
                 </button>
               </span>
                     </div>
+                    <div id="searchtypeid" style="
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+  ">
+                        <input type="radio" name="searchtype" value="2" checked=""> People
+                        <input type="radio" name="searchtype" value="1" style="
+    padding-left: 20px;
+    margin-left: 40px;
+"> Cases
+                    </div>
                 </form>
+                <!-- /.search form -->
+
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
