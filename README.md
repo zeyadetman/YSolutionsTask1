@@ -14,7 +14,7 @@
 
 - [ ] Send mail
 
-- [ ] Search
+- [x] Search
 
 - [x] Follow
 
