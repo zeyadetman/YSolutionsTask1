@@ -21,6 +21,8 @@
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link href="css/search.css" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -405,7 +407,7 @@
             <section class="content">
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 sideforprofiles">
 
                         <!-- Profile Image -->
                         <div class="box box-primary">
@@ -507,24 +509,24 @@
                         <!-- /.box -->
                     </div>
                     <!-- /.col -->
-                    <div class="col-md-9">
+                    <div id="searchresultshow">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
 
 
 
-                                <li id="caseslist" class=""><a href="#cases" data-toggle="tab" aria-expanded="false">Cases</a></li>
+                                <li id="casesslist" class=""><a href="#caseslist" data-toggle="tab" aria-expanded="false">Cases</a></li>
 
                                 <li class="active" id="peoplelist"><a href="#peopleslist" data-toggle="tab" aria-expanded="true">People</a></li>
                             </ul>
                             <div class="tab-content col-md-12">
-                                <section class="tab-pane col-md-12 active" id="peopleslist">
+                                <section class="tab-pane col-md-12" id="peopleslist">
 
                                 </section>
 
-                                <div class="tab-pane" id="cases">
+                                <section class="tab-pane" id="caseslist">
 
-                                </div>
+                                </section>
                                 <!-- /.item -->
 
                             </div>

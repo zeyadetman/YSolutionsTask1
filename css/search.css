@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+body {
+    background-color: rgb(219, 226, 236);
+}
+
+.xx {
+    display: flex;
+}
+
+.xx1 {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px 10px 0px;
+}
+
+.xx1 img {
+    width: 50%;
+    height: 250px;
+    padding-bottom: 10px;
+}
+
+.xx11 {
+    flex-grow: 1;
+    padding-left: 15px;
+    vertical-align: middle;
+    text-justify: center;
+}
+
+.xx11 h4 {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    color: rgb(252, 176, 64);
+    text-transform: uppercase;
+}
+
+.descriptioncase {
+    margin-top: 10px;
+    color: white;
+}
+
+small {
+    color: white;
+}
+
+.enMoney::after {
+    content: "$";
+}
+
+.enMoney,
+.stat,
+.nnoj {
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(252, 176, 64);
+    font-size: 24;
+}
+
+.amount,
+.noj,
+.status {
+    display: flex;
+    flex-direction: column;
+    font-size: 20;
+    margin-bottom: 0px;
+    color: #d2d6de;
+}

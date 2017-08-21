@@ -243,11 +243,15 @@ function search() {
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
             if (searchtype == '2') {
+                $("#casesslist").css("display", "none");
+                $("#caseslist").css("display", "none");
+                document.getElementById('searchresultshow').setAttribute('class', 'col-md-9');
+                document.getElementsByClassName('sideforprofiles')[0].style.display = 'inline';
                 console.log(document.getElementById('peoplelist'));
-                document.getElementById('peoplelist').style.display = "inline";
+                document.getElementById('peopleslist').style.display = "inline";
                 console.log(JSON.parse(this.responseText)['SearchedPepole']);
                 document.getElementById('caseslist').style.display = "none";
-                document.getElementById('peoplelist').setAttribute('class', 'active');
+                document.getElementById('peopleslist').setAttribute('class', 'active');
                 for (var i = 0; i < JSON.parse(this.responseText)['SearchedPepole'].length; i++) {
                     var labl = ''; //span follow or not
                     console.log(followinglist);
@@ -286,10 +290,71 @@ function search() {
                 }
 
             } else if (searchtype == '1') {
-                document.getElementById('peoplelist').style.display = "none";
+                $("#caseslist").addClass("col-md-12");
+                $("#peopleslist").removeClass("active");
+                $("#peoplelist").removeClass("active");
+                $("#peopleslist").css("display", "none");
+                $("#peoplelist").css("display", "none");
+                $("#casesslist").addClass("active");
+                $("#caseslist").addClass("active");
+                $("#searchresultshow").addClass("col-md-12");
+                $(".sideforprofiles").css("display", "none");
                 console.log(JSON.parse(this.responseText)['SearchedCases']);
-                document.getElementById('caseslist').style.display = "inline";
-                document.getElementById('caseslist').setAttribute('class', 'active');
+                $("#caseslist").css("display", "inline");
+                var res = JSON.parse(this.responseText)['SearchedCases'];
+                //-----
+                for (var i = 0; i < res.length; i++) {
+                    var firstdiv = document.getElementById('caseslist');
+                    var seconddiv = document.createElement('div');
+                    var firstimg = document.createElement('img');
+                    var thirddiv = document.createElement('div');
+                    var firsth4 = document.createElement('h4');
+                    var small = document.createElement('small');
+                    var pdescription = document.createElement('p');
+                    var pamount = document.createElement('p');
+                    var spanfirst = document.createElement('span');
+                    var pnoj = document.createElement('p');
+                    var spannoj = document.createElement('span');
+                    var pstatus = document.createElement('p');
+                    var spanstat = document.createElement('span');
+                    $(firstdiv).append(seconddiv);
+                    $(seconddiv).append(firstimg);
+                    $(seconddiv).append(thirddiv);
+                    $(thirddiv).append(firsth4);
+                    $(thirddiv).append(small);
+                    $(thirddiv).append(pdescription);
+                    $(thirddiv).append(pamount);
+                    $(thirddiv).append(spanfirst);
+                    $(thirddiv).append(pnoj);
+                    $(thirddiv).append(spannoj);
+                    $(thirddiv).append(pstatus);
+                    $(thirddiv).append(spanstat);
+                    setAttributes(firstdiv, { 'class': 'col-md-12 xx' });
+                    setAttributes(seconddiv, { 'class': 'col-md-6 xx1' });
+                    setAttributes(firstimg, { 'src': res[i]['IMG'], 'class': 'img-responsive xx11' });
+                    setAttributes(thirddiv, { 'class': 'xx11' });
+                    setAttributes(pdescription, { 'class': 'descriptioncase' });
+                    setAttributes(pamount, { 'class': 'amount' });
+                    setAttributes(spanfirst, { 'class': 'enMoney' });
+                    setAttributes(pnoj, { 'class': 'noj' });
+                    setAttributes(spannoj, { 'class': 'nnoj' });
+                    setAttributes(pstatus, { 'class': 'status' });
+                    setAttributes(spanstat, { 'class': 'stat' });
+                    firsth4.innerHTML = res[i]['CaseName'];
+                    small.innerHTML = res[i]['EndDate'];
+                    pdescription.innerHTML = res[i]['CaseDescription'];
+                    pamount.innerHTML = "Amount:";
+                    spanfirst.innerHTML = numberWithCommas(res[i]['Amount']);
+                    pnoj.innerHTML = "Number of joins:";
+                    spannoj.innerHTML = res[i]['Numberofjoins'];
+                    pstatus.innerHTML = "Status:";
+                    spanstat.innerHTML = res[i]['status'];
+                }
+
+
+
+
+
             }
         }
     });
@@ -300,4 +365,8 @@ function search() {
     xhr.setRequestHeader("postman-token", "070d0ba9-efb1-d580-e805-2f10edb0b1cb");
 
     xhr.send(data);
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
