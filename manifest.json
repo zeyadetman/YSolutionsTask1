@@ -1,0 +1,25 @@
+{
+    "short_name": "Sunbula",
+    "name": "Sunbula",
+    "icons": [{
+            "src": "images/slogo.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "images/slogo.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "images/slogo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "index.html?launcher=true",
+    "display": "standalone",
+    "background_color": "#faaf40",
+    "orientation": "landscape",
+    "theme_color": "#faaf40"
+}
