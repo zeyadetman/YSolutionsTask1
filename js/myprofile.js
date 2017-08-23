@@ -2,6 +2,7 @@
 followers(cookieJSON(document.cookie));
 following(cookieJSON(document.cookie));
 
+
 originalid = cookieJSON(document.cookie)['UserID'];
 /** Finish Call Followers and Following lists */
 
@@ -13,6 +14,9 @@ unfollowerror = '';
 
 followerslist = [];
 followinglist = [];
+
+
+listsfiller();
 
 
 console.log(cookieJSON(document.cookie)['UserID']);
@@ -127,23 +131,31 @@ function following(ideee) {
 }
 /****** Finish Retrieve Following List API******/
 
+
 console.log(followerslist, followinglist);
 console.log(JSON.stringify(followerslist));
-setTimeout(function() {
-    console.log(followerslist.length);
-    for (var i = 0; i < followerslist.length; i++) {
-        console.log(followerslist[i]);
-        userDetails(followerslist[i], 'FollowerList');
-    }
 
-    console.log(followinglist.length);
-    for (var i = 0; i < followinglist.length; i++) {
-        console.log(followinglist[i]);
-        userDetails(followinglist[i], 'FollowingList');
-    }
+function listsfiller() {
+    setTimeout(function() {
+        console.log(followerslist.length);
+        for (var i = 0; i < followerslist.length; i++) {
+            console.log(followerslist[i]);
+            userDetails(followerslist[i], 'FollowerList');
+        }
+
+        console.log(followinglist.length);
+        for (var i = 0; i < followinglist.length; i++) {
+            console.log(followinglist[i]);
+            userDetails(followinglist[i], 'FollowingList');
+        }
+
+        $("#followerlistcountermain").html(`Followerlist ${followerslist.length}`);
+        $("#followinglistcountermain").html(`Followinglist ${followinglist.length}`);
+        aboutme(originalid);
 
 
-}, 1000);
+    }, 1500);
+}
 
 
 /****** Retrieve Users data API******/
@@ -188,7 +200,8 @@ function userDetails(ideee, place) {
             setAttributes(img, { 'class': 'img-responsive img-circle img-bordered-sm center-block', 'src': res['ImgURL'] });
             setAttributes(address, { 'class': 'text-center' });
             name.setAttribute('class', 'text-center');
-            address.innerHTML = res['Address'];
+            address.innerHTML = `Address: ${res['Address']}`;
+            //address.innerHTML = res['Address'];
             name.innerHTML = res['Name'];
             var btnck = document.createElement('div');
             child.appendChild(btnck);
@@ -287,4 +300,62 @@ function followaction(ideee) {
         //following(cookieJSON(document.cookie));
         location.reload();
     }
+}
+
+/* jQuery Preloader
+ -----------------------------------------------*/
+$(window).load(function() {
+    $('.preloader').fadeOut(1000); // set duration in brackets    
+});
+
+
+function aboutme(riginalid) {
+    console.log(riginalid);
+    var data = JSON.stringify({
+        "User_ID": riginalid
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            var ww = JSON.parse(this.responseText);
+            console.log(ww['Address']);
+            console.log(ww);
+            $(".aboutmeprofileimage").attr("src", ww['Img']);
+            $("#avatarbaby").attr("src", ww['Img']);
+            $("#mapmarkerpng").html(ww['Address']);
+            $("#emailspng").html(ww['EMail']);
+            $("#aboutmeusername").html(ww['Name']);
+            $("#phone").html(ww['MobileNumber']);
+            $("#gmailpng").html(ww['GMailID']);
+            $("#facebookpng").html(ww['FacebookID']);
+            if (ww['IsTrusted'] == true) {
+                var x = document.createElement('img');
+                $("#fffggg").append(x);
+                $(x).addClass("img-responsive verifiedperson");
+                x.setAttribute("src", "../../verified.png");
+            } else if (ww['IsTrusted'] == false) {
+                //  $("#verificationicon").css("display", "none");
+            }
+            $('#counterssfollowers').html(numberWithCommas(followerslist.length));
+            $('#counterssfollowing').html(numberWithCommas(followinglist.length));
+            $('#counterssmycases').html(numberWithCommas(ww['MyCases'].length));
+            $('#counterssreviews').html(numberWithCommas(ww['ReviewNumbers']));
+
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/User/UserDetails");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "b1b3432f-b46b-67ee-d670-1ac24cb84ab2");
+
+    xhr.send(data);
+
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

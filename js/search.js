@@ -126,7 +126,7 @@ function following(ideee) {
     xhr.send(data);
 }
 /****** Finish Retrieve Following List API******/
-
+/*
 console.log(followerslist, followinglist);
 console.log(JSON.stringify(followerslist));
 setTimeout(function() {
@@ -146,7 +146,7 @@ setTimeout(function() {
 
 
 }, 1000);
-
+*/
 /****** Unfollow User API******/
 function unfollow(originuser1, secondaryuser1) {
     console.log('1');

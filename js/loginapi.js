@@ -1,3 +1,9 @@
+var touchzone = document.getElementById("signin");
+// Add an event handler for the touchstart event
+touchzone.addEventListener("touchstart", sending, false);
+$('#signin').on('touchstart click', sending);
+
+
 function sending() {
     var data = JSON.stringify({
         "Email": document.getElementById('mail').value,

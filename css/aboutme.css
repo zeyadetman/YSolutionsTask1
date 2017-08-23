@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Condensed:400,500');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400i,700,800&subset=latin-ext,vietnamese');
+.aboutmemainsec {
+    display: flex;
+}
+
+.aboutmeico {
+    margin: 0 5 15 0;
+}
+
+.aboutmeprofileimage {
+    width: 204px;
+    height: 260px;
+    margin: 3% 0 0 5%;
+    border-radius: 5px;
+}
+
+.aboutmemain h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 800;
+    margin-top: 35px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.aboutmecontainer {
+    overflow: overlay;
+}
+
+.aboutmemain ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.aboutmespan {
+    /* text-align: center; */
+    padding: 0px 0 0 10;
+    color: darkgray;
+}
+
+.listscounter {
+    display: flex;
+    margin-top: 20px;
+}
+
+.listscounter li {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutmemainli li {
+    display: flex;
+    flex-direction: row;
+}
+
+.aboutmecontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.countsty {
+    color: #faaf40;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    display: inline;
+}
+
+.counterss {
+    color: white;
+    font-size: 30px;
+}
+
+.verifiedperson {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10%;
+}
