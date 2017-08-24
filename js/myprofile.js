@@ -2,6 +2,9 @@
 followers(cookieJSON(document.cookie));
 following(cookieJSON(document.cookie));
 
+countriesandcities = [];
+countrieslist = [{}];
+
 
 originalid = cookieJSON(document.cookie)['UserID'];
 /** Finish Call Followers and Following lists */
@@ -87,12 +90,12 @@ function cookieJSON(x) {
         }
     }
     var dic = [];
-    console.log(list);
+    //console.log(list);
     for (var i = 0; i < list.length; i += 2) {
         dic[list[i]] = list[i + 1];
     }
-    console.log(dic['UserID']);
-    console.log(dic['Verified']);
+    //console.log(dic['UserID']);
+    //console.log(dic['Verified']);
     return dic;
 }
 /****** Finish Read Cookie ******/
@@ -108,7 +111,7 @@ function following(ideee) {
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            // console.log(this.responseText);
             var response = JSON.parse(this.responseText);
             var following_count = document.getElementsByClassName('following-count');
             for (var i = 0; i < following_count.length; i++) {
@@ -117,7 +120,7 @@ function following(ideee) {
             for (var i = 0; i < response['ListofPepoleFollowing'].length; i++) {
                 //userDetails(response['ListofPepoleFollowing'][i]['FollowID'], response['ListofPepoleFollowing'][i]['Name'], 'FollowingList');
                 followinglist.push(response['ListofPepoleFollowing'][i]['FollowID']);
-                console.log(response['ListofPepoleFollowing']);
+                //console.log(response['ListofPepoleFollowing']);
             }
         }
     });
@@ -132,35 +135,51 @@ function following(ideee) {
 /****** Finish Retrieve Following List API******/
 
 
-console.log(followerslist, followinglist);
-console.log(JSON.stringify(followerslist));
+//console.log(followerslist, followinglist);
+//console.log(JSON.stringify(followerslist));
 
 function listsfiller() {
     setTimeout(function() {
-        console.log(followerslist.length);
+        //      console.log(followerslist.length);
         for (var i = 0; i < followerslist.length; i++) {
-            console.log(followerslist[i]);
+            //        console.log(followerslist[i]);
             userDetails(followerslist[i], 'FollowerList');
         }
 
-        console.log(followinglist.length);
+        //  console.log(followinglist.length);
         for (var i = 0; i < followinglist.length; i++) {
-            console.log(followinglist[i]);
+            //    console.log(followinglist[i]);
             userDetails(followinglist[i], 'FollowingList');
         }
 
         $("#followerlistcountermain").html(`Followerlist ${followerslist.length}`);
         $("#followinglistcountermain").html(`Followinglist ${followinglist.length}`);
         aboutme(originalid);
+    }, 1000);
+}
 
+setTimeout(function() {
+    for (var i = 0; i < countrieslist.length; i++) {
+        cities1(countrieslist[i]['countryid'], countrieslist[i]['countryname']);
+    }
+    console.log(countriesandcities);
+    cowboy(countriesandcities);
 
-    }, 1500);
+}, 800);
+
+function samepass() {
+    if ($('#inputpassword').attr('value') == $('#inputrepassword').attr('value')) {
+        return false;
+    } else {
+        console.log('right');
+        $("#inputpassword").append('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>');
+    }
 }
 
 
 /****** Retrieve Users data API******/
 function userDetails(ideee, place) {
-    console.log('1');
+    //  console.log('1');
     var data = JSON.stringify({
         "User_ID": ideee
     });
@@ -178,7 +197,7 @@ function userDetails(ideee, place) {
     } else if (place == 'FollowingList') {
         labl = 'Unfollow';
     }
-    console.log(labl);
+    //console.log(labl);
 
 
     var xhr = new XMLHttpRequest();
@@ -231,7 +250,7 @@ function userDetails(ideee, place) {
 
 /****** Unfollow User API******/
 function unfollow(originuser1, secondaryuser1) {
-    console.log('1');
+    //console.log('1');
     var data = JSON.stringify({
         "User_ID": originuser1,
         "UNFollowingID": secondaryuser1
@@ -243,7 +262,7 @@ function unfollow(originuser1, secondaryuser1) {
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
             var x = this.responseText;
-            console.log(x);
+            // console.log(x);
             unfollowissuc = JSON.parse(this.responseText)['IsSuccess'];
             unfollowerror = JSON.parse(this.responseText)['ErrorMessage'];
         }
@@ -285,16 +304,16 @@ function follow(originuser1, secondaryuser1) {
 
 function followaction(ideee) {
     if (followinglist.indexOf(ideee) >= 0) {
-        console.log(ideee);
-        console.log('unfollow');
+        // console.log(ideee);
+        // console.log('unfollow');
         unfollow(originalid, ideee);
         //followers(cookieJSON(document.cookie));
         //following(cookieJSON(document.cookie));
         location.reload();
 
     } else {
-        console.log(ideee);
-        console.log('follow');
+        // console.log(ideee);
+        // console.log('follow');
         follow(originalid, ideee);
         //followers(cookieJSON(document.cookie));
         //following(cookieJSON(document.cookie));
@@ -307,7 +326,7 @@ function followaction(ideee) {
 $(window).load(function() {
     $('.preloader').fadeOut(1000); // set duration in brackets    
 });
-
+useraddressid = '';
 
 function aboutme(riginalid) {
     console.log(riginalid);
@@ -321,8 +340,11 @@ function aboutme(riginalid) {
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
             var ww = JSON.parse(this.responseText);
-            console.log(ww['Address']);
+            setTimeout(function() {
+                console.log(ww['Address']);
+            }, 2000);
             console.log(ww);
+            useraddressid = ww['Address']
             $(".aboutmeprofileimage").attr("src", ww['Img']);
             $("#avatarbaby").attr("src", ww['Img']);
             $("#mapmarkerpng").html(ww['Address']);
@@ -344,6 +366,12 @@ function aboutme(riginalid) {
             $('#counterssmycases').html(numberWithCommas(ww['MyCases'].length));
             $('#counterssreviews').html(numberWithCommas(ww['ReviewNumbers']));
 
+            $(".btnuploadpic").css("background-image", `url(${ww['Img']})`);
+
+            $("#inputName").attr("placeholder", ww['Name']);
+            $("#inputEmail").attr("placeholder", ww['EMail']);
+            $("#inputmobile").attr("placeholder", ww['MobileNumber']);
+
         }
     });
 
@@ -358,4 +386,191 @@ function aboutme(riginalid) {
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
+countries();
+console.log(countrieslist);
+
+
+function countries() {
+    var data = JSON.stringify({});
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            var res = JSON.parse(this.responseText);
+            //$("#inputcountry");
+            for (var i = 0; i < res['AllCountries'].length; i++) {
+                countrieslist.push({ countryid: res['AllCountries'][i]['CountryID'], countryname: res['AllCountries'][i]['Countryname'] });
+                var ex = document.createElement('option');
+                $("#inputcountry").append(ex);
+                setAttributes(ex, { 'value': res['AllCountries'][i]['CountryID'] });
+                ex.innerHTML = res['AllCountries'][i]['Countryname'];
+            }
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/Country/AllCountries");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "5ecefa47-a7e4-088d-3226-3a271f99a62c");
+
+    xhr.send(data);
+}
+
+function cities(kntre) {
+    var data = JSON.stringify({
+        "CountryID": kntre
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            var res = JSON.parse(this.responseText);
+            for (var i = 0; i < res['AllCities'].length; i++) {
+                var ex = document.createElement('option');
+                $("#inputcity").append(ex);
+                setAttributes(ex, { 'value': res['AllCities'][i]['CityID'] });
+                ex.innerHTML = res['AllCities'][i]['CityName'];
+            }
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/Country/AllCities");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "db97af10-4a84-0911-6c44-6676fca5845f");
+
+    xhr.send(data);
+}
+
+
+
+function cities1(kntre, kntrename) {
+    var data = JSON.stringify({
+        "CountryID": kntre
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            var res = JSON.parse(this.responseText);
+
+            if (res['AllCities'] != null) {
+                console.log(res['AllCities'], res['AllCities'].length);
+                for (var i = 0; i < res['AllCities'].length; i++) {
+                    countriesandcities.push({ cityid: res['AllCities'][i]['CityID'], cityname: res['AllCities'][i]['CityName'], countryid: kntre, countryname: kntrename });
+                }
+            }
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/Country/AllCities");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "db97af10-4a84-0911-6c44-6676fca5845f");
+
+    xhr.send(data);
+}
+
+function changeFunc() {
+    $("#inputcountry :selected").text(); // The text content of the selected option
+    $("#inputcountry").val();
+    console.log($("#inputcountry").val());
+    $('#inputcity')
+        .find('option')
+        .remove()
+        .end()
+        .append('<option value="">Default option</option>')
+    cities($("#inputcountry").val());
+}
+
+function cityFunc() {
+    $("#inputcity :selected").text(); // The text content of the selected option
+    $("#inputcity").val();
+    console.log($("#inputcity :selected").text(),
+        $("#inputcity").val()
+    );
+}
+
+
+//not finished//
+function GetAllCategories() {
+    var data = JSON.stringify({
+        "User_ID": "8081c15c-4247-4c31-a2c6-569ed5996dd0"
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/Category/GetAllCategories");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "03ccebbb-48d7-3f3f-16ea-3e957c6da926");
+
+    xhr.send(data);
+}
+//- ---------------- -//
+
+function cowboy(countriesandcities) {
+    setTimeout(function() {
+        for (var i = 0; i < countriesandcities.length; i++) {
+            if (countriesandcities[i]['cityid'] == useraddressid) {
+                console.log(countriesandcities[i]);
+            }
+        }
+    }, 1000);
+}
+
+function finallyedit() {
+    console.log(originalid, );
+    var name = '';
+    if ($("#inputName").val() == '') {
+        name = $("input[placeholder]").val(function() {
+            return $("#inputName").attr("placeholder");
+        });
+    } else {
+        name = $("#inputName").val();
+    }
+    console.log(name);
+
+    var data = JSON.stringify({
+        // "UserID": originalid,
+        "Name": "Mahmoud Yousef",
+        "Password": "147852",
+        "EMail": "mahmoud.yousef",
+        "MobileNumber": "011447858",
+        "Address": "67c91722-0118-4132-8d45-24916f3a05e8",
+        "Gender": "Male",
+        "InterestedCategory": "9e922468-fc99-4d4d-852c-185586d0e79a"
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/User/EditProfile");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "ecea19fc-31b4-3424-556d-c81233c5aa43");
+
+    xhr.send(data);
 }
