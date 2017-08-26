@@ -37,7 +37,7 @@ function checker() {
                 window.location.replace('/newsfeed.html');
             } else {
                 document.getElementById('usrid').value = '';
-                document.getElementById('errormsg').style.display = 'inline';
+                document.getElementById('errormsg').style.visibility = 'visible';
             }
 
         }

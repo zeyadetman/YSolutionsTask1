@@ -83,12 +83,12 @@ function cookieJSON(x) {
         }
     }
     var dic = [];
-    console.log(list);
+    //console.log(list);
     for (var i = 0; i < list.length; i += 2) {
         dic[list[i]] = list[i + 1];
     }
-    console.log(dic['UserID']);
-    console.log(dic['Verified']);
+    //console.log(dic['UserID']);
+    //console.log(dic['Verified']);
     return dic;
 }
 /****** Finish Read Cookie ******/
@@ -113,7 +113,7 @@ function following(ideee) {
             for (var i = 0; i < response['ListofPepoleFollowing'].length; i++) {
                 //userDetails(response['ListofPepoleFollowing'][i]['FollowID'], response['ListofPepoleFollowing'][i]['Name'], 'FollowingList');
                 followinglist.push(response['ListofPepoleFollowing'][i]['FollowID']);
-                console.log(response['ListofPepoleFollowing']);
+                //console.log(response['ListofPepoleFollowing']);
             }
         }
     });
@@ -149,7 +149,7 @@ setTimeout(function() {
 */
 /****** Unfollow User API******/
 function unfollow(originuser1, secondaryuser1) {
-    console.log('1');
+    //console.log('1');
     var data = JSON.stringify({
         "User_ID": originuser1,
         "UNFollowingID": secondaryuser1
@@ -161,7 +161,7 @@ function unfollow(originuser1, secondaryuser1) {
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
             var x = this.responseText;
-            console.log(x);
+            // console.log(x);
             unfollowissuc = JSON.parse(this.responseText)['IsSuccess'];
             unfollowerror = JSON.parse(this.responseText)['ErrorMessage'];
         }
@@ -188,7 +188,7 @@ function follow(originuser1, secondaryuser1) {
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            //console.log(this.responseText);
         }
     });
 
@@ -203,16 +203,16 @@ function follow(originuser1, secondaryuser1) {
 
 function followaction(ideee) {
     if (followinglist.indexOf(ideee) >= 0) {
-        console.log(ideee);
-        console.log('unfollow');
+        //console.log(ideee);
+        //console.log('unfollow');
         unfollow(originalid, ideee);
         //followers(cookieJSON(document.cookie));
         //following(cookieJSON(document.cookie));
         location.reload();
 
     } else {
-        console.log(ideee);
-        console.log('follow');
+        // console.log(ideee);
+        //console.log('follow');
         follow(originalid, ideee);
         //followers(cookieJSON(document.cookie));
         //following(cookieJSON(document.cookie));
@@ -220,17 +220,17 @@ function followaction(ideee) {
     }
 }
 
-console.log(window.location.href);
+//console.log(window.location.href);
 urlpage = (window.location.href).split('&');
-console.log(urlpage);
+//console.log(urlpage);
 searchq = (urlpage[0].split('='))[1];
 searchtype = (urlpage[2].split('='))[1];
 
-console.log(searchq, searchtype);
+//console.log(searchq, searchtype);
 search();
 
 function search() {
-    console.log('1');
+    //  console.log('1');
     var data = JSON.stringify({
         "User_ID": cookieJSON(document.cookie)['UserID'],
         "SearchWord": searchq,
@@ -247,14 +247,14 @@ function search() {
                 $("#caseslist").css("display", "none");
                 document.getElementById('searchresultshow').setAttribute('class', 'col-md-9');
                 document.getElementsByClassName('sideforprofiles')[0].style.display = 'inline';
-                console.log(document.getElementById('peoplelist'));
+                // console.log(document.getElementById('peoplelist'));
                 document.getElementById('peopleslist').style.display = "inline";
-                console.log(JSON.parse(this.responseText)['SearchedPepole']);
+                // console.log(JSON.parse(this.responseText)['SearchedPepole']);
                 document.getElementById('caseslist').style.display = "none";
                 document.getElementById('peopleslist').setAttribute('class', 'active');
                 for (var i = 0; i < JSON.parse(this.responseText)['SearchedPepole'].length; i++) {
                     var labl = ''; //span follow or not
-                    console.log(followinglist);
+                    //   console.log(followinglist);
                     if (followinglist.indexOf(JSON.parse(this.responseText)['SearchedPepole'][i]['User_ID']) >= 0) {
                         labl = 'Unfollow';
                     } else {
@@ -262,6 +262,7 @@ function search() {
                     }
 
                     var parent = document.getElementById('peopleslist');
+
                     var child = document.createElement('div');
                     var img = document.createElement('img');
                     var name = document.createElement('h5');
@@ -299,7 +300,7 @@ function search() {
                 $("#caseslist").addClass("active");
                 $("#searchresultshow").addClass("col-md-12");
                 $(".sideforprofiles").css("display", "none");
-                console.log(JSON.parse(this.responseText)['SearchedCases']);
+                //console.log(JSON.parse(this.responseText)['SearchedCases']);
                 $("#caseslist").css("display", "inline");
                 var res = JSON.parse(this.responseText)['SearchedCases'];
                 //-----

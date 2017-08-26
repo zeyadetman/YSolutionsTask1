@@ -17,12 +17,12 @@ function signup() {
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            setCookie('UserID', JSON.parse(this.responseText)['UserID']);
             if (JSON.parse(this.responseText)['IsSuccess'] == true) {
+                setCookie('UserID', JSON.parse(this.responseText)['UserID']);
+                setCookie('Verified', 'false');
                 window.location.replace('/vercode.html');
-
             } else {
-                document.getElementById('signuperror').style.display = 'block';
+                document.getElementById('signuperror').style.visibility = 'visible';
             }
         }
     });

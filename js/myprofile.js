@@ -4,7 +4,7 @@ following(cookieJSON(document.cookie));
 
 countriesandcities = [];
 countrieslist = [{}];
-
+generalinfo = [];
 
 originalid = cookieJSON(document.cookie)['UserID'];
 /** Finish Call Followers and Following lists */
@@ -155,7 +155,7 @@ function listsfiller() {
         $("#followerlistcountermain").html(`Followerlist ${followerslist.length}`);
         $("#followinglistcountermain").html(`Followinglist ${followinglist.length}`);
         aboutme(originalid);
-    }, 1000);
+    }, 300);
 }
 
 setTimeout(function() {
@@ -165,16 +165,7 @@ setTimeout(function() {
     console.log(countriesandcities);
     cowboy(countriesandcities);
 
-}, 800);
-
-function samepass() {
-    if ($('#inputpassword').attr('value') == $('#inputrepassword').attr('value')) {
-        return false;
-    } else {
-        console.log('right');
-        $("#inputpassword").append('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>');
-    }
-}
+}, 600);
 
 
 /****** Retrieve Users data API******/
@@ -321,12 +312,26 @@ function followaction(ideee) {
     }
 }
 
-/* jQuery Preloader
- -----------------------------------------------*/
 $(window).load(function() {
-    $('.preloader').fadeOut(1000); // set duration in brackets    
+    $('.preloader').fadeOut(6000); // set duration in brackets 
+
 });
+
 useraddressid = '';
+
+$(function() {
+    $("div").slice(0, 6).show();
+    $("#loadMore").on('click', function(e) {
+        e.preventDefault();
+        $("div:hidden").slice(0, 6).slideDown();
+        if ($("div:hidden").length == 0) {
+            $("#load").fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+    });
+});
 
 function aboutme(riginalid) {
     console.log(riginalid);
@@ -340,10 +345,10 @@ function aboutme(riginalid) {
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
             var ww = JSON.parse(this.responseText);
-            setTimeout(function() {
-                console.log(ww['Address']);
-            }, 2000);
+            console.log(ww['Address']);
+
             console.log(ww);
+            generalinfo = ww;
             useraddressid = ww['Address']
             $(".aboutmeprofileimage").attr("src", ww['Img']);
             $("#avatarbaby").attr("src", ww['Img']);
@@ -501,10 +506,12 @@ function cityFunc() {
 }
 
 
+GetAllCategories();
 //not finished//
 function GetAllCategories() {
+    console.log('22');
     var data = JSON.stringify({
-        "User_ID": "8081c15c-4247-4c31-a2c6-569ed5996dd0"
+        "User_ID": originalid
     });
 
     var xhr = new XMLHttpRequest();
@@ -512,7 +519,14 @@ function GetAllCategories() {
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            console.log(JSON.parse(this.responseText));
+            var res = JSON.parse(this.responseText)['AllCategories'];
+            for (var i = 0; i < res.length; i++) {
+                var ex = document.createElement('option');
+                $("#inputinterests").append(ex);
+                setAttributes(ex, { 'value': res[i]['CategoryID'] });
+                ex.innerHTML = res[i]['CategoryName'];
+            }
         }
     });
 
@@ -532,30 +546,92 @@ function cowboy(countriesandcities) {
                 console.log(countriesandcities[i]);
             }
         }
-    }, 1000);
+    }, 500);
+}
+
+function validation() {
+    console.log('22');
+    if ($("#inputpassword").val() !== $("#inputrepassword").val()) {
+        alert('enter correct password');
+    } else {
+        console.log($("#yourenotbeauty").val());
+        addimage();
+        finallyedit();
+        setTimeout(function() {
+            location.reload();
+        }, 6000);
+    }
+}
+
+function addimage() {
+    var data = $("#yourenotbeauty").val();
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("POST", `http://yakensolution.cloudapp.net/Charity/Api/User/AddPicture?User_ID=${originalid}`);
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "2cc1bc27-c042-5eaa-3abb-fc0fb36de568");
+
+    xhr.send(data);
 }
 
 function finallyedit() {
-    console.log(originalid, );
+    console.log(originalid);
+    console.log(generalinfo);
     var name = '';
+    var email = '';
+    var password = '';
+    var gender = '';
+    var mobile = '';
+    var address = '';
+    var interested = '';
+
     if ($("#inputName").val() == '') {
-        name = $("input[placeholder]").val(function() {
-            return $("#inputName").attr("placeholder");
-        });
+        name = generalinfo['Name'];
     } else {
         name = $("#inputName").val();
     }
-    console.log(name);
+    email = generalinfo['EMail'];
+    password = $("#inputpassword").val();
+    if ($("#inputgender").val() == '0') {
+        gender = generalinfo['Gender'];
+    } else {
+        gender = $("#inputgender").val();
+    }
+    if ($("#inputmobile").val() == '') {
+        mobile = generalinfo['MobileNumber'];
+    } else {
+        mobile = $("#inputmobile").val();
+    }
+    if ($("#inputcity").val() == '0') {
+        address = generalinfo['Address'];
+    } else {
+        address = $("#inputcity").val();
+    }
 
+    if ($("#inputinterests").val() == '0') {
+        interested = generalinfo['InterstedCategory'];
+    } else {
+        interested = $("#inputinterests").val();
+    }
+
+    console.log(name, address, password, email, mobile, gender, interested);
     var data = JSON.stringify({
-        // "UserID": originalid,
-        "Name": "Mahmoud Yousef",
-        "Password": "147852",
-        "EMail": "mahmoud.yousef",
-        "MobileNumber": "011447858",
-        "Address": "67c91722-0118-4132-8d45-24916f3a05e8",
-        "Gender": "Male",
-        "InterestedCategory": "9e922468-fc99-4d4d-852c-185586d0e79a"
+        "UserID": originalid,
+        "Name": name,
+        "Password": password,
+        "EMail": email,
+        "MobileNumber": mobile,
+        "Address": address,
+        "Gender": gender,
+        "InterestedCategory": interested
     });
 
     var xhr = new XMLHttpRequest();

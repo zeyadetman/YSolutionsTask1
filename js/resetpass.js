@@ -1,4 +1,5 @@
 console.log('usremail');
+console.log(document.cookie);
 
 function reset2() {
     console.log(document.getElementById('usremail').value);
@@ -11,11 +12,15 @@ function reset2() {
 
     xhr.addEventListener("readystatechange", function() {
         if (this.readyState === 4) {
-            if (JSON.parse(this.responseText)['IsSuccess'] == 'true') {
-                document.getElementById('errormsg').innerHTML = JSON.parse(this.responseText)['ErrorMessage'];
+            if (JSON.parse(this.responseText)['IsSuccess'] === true) {
+                console.log('111');
+                document.getElementById('errormsg22').innerHTML = JSON.parse(this.responseText)['ErrorMessage'];
+                location.replace('NewPassword.html');
                 //document.getElementById('errormsg').style.visibility = 'inline';
             } else {
-                document.getElementById('errormsg').innerHTML = JSON.parse(this.responseText)['ErrorMessage'];
+                console.log(JSON.parse(this.responseText)['IsSuccess']);
+                document.getElementById('errormsg22').innerHTML = JSON.parse(this.responseText)['ErrorMessage'];
+
                 //document.getElementById('errormsg').style.visibility = 'inline';
             }
         }
@@ -55,6 +60,36 @@ function setter() {
     xhr.setRequestHeader("content-type", "application/json");
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.setRequestHeader("postman-token", "fba94788-5d13-5a92-8d04-97193412d70e");
+
+    xhr.send(data);
+}
+
+function reset211() {
+    var data = JSON.stringify({
+        "Email": $("#usrresetemail").val(),
+        "Password": $("#usrresetpassword").val(),
+        "ConfirmPassword": $("#usrresetrepassword").val(),
+        "VerficationCode": $("#usrresetverif").val()
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            console.log(JSON.parse(this.responseText));
+            if (JSON.parse(this.responseText)['IsSuccess'] == true)
+                location.replace("Log-in.html");
+            else if (JSON.parse(this.responseText)['IsSuccess'] == false) {
+                $("#errormsg211").css("visibility", "visible");
+            }
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/User/ResetPassword");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "00771751-53ab-ac08-3627-c33746279377");
 
     xhr.send(data);
 }

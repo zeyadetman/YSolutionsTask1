@@ -47,15 +47,13 @@ function getInfo() {
     FB.api('/me', 'GET', {
         fields: 'first_name,last_name,age_range,birthday,name,id,education,hometown,location,email'
     }, function(response) {
-        setCookie('username', response.name);
-        setCookie('education', response.education);
-        setCookie('location', response.location);
+
         for (var x = 0; x < document.getElementsByClassName('user-name').length; x++) {
 
             document.getElementsByClassName('user-name')[x].innerHTML = checkCookie('username');
         }
-        document.getElementById('edu').innerHTML = checkCookie('education');
-        document.getElementById('loca').innerHTML = checkCookie('location');
+        //document.getElementById('edu').innerHTML = checkCookie('education');
+        // document.getElementById('loca').innerHTML = checkCookie('location');
     });
 }
 

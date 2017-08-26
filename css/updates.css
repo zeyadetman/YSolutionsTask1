@@ -1,19 +1,23 @@
 #loginerror {
-    display: none;
+    visibility: hidden;
     padding: center;
     padding: 10px 0 10px 0;
     margin: 25% 0 0 0;
 }
 
 #signuperror {
-    display: none;
+    visibility: hidden;
     padding: 310px 0 0px 0;
     margin: 0 0 0 0;
 }
 
+#fb-login:hover {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 990px) {
     #signuperror {
-        display: none;
+        visibility: hidden;
         padding: 65px 0 0px 0;
         margin: 0 0 0 0;
     }
