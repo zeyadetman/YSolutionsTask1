@@ -331,7 +331,7 @@ function search() {
                     $(thirddiv).append(pstatus);
                     $(thirddiv).append(spanstat);
                     setAttributes(firstdiv, { 'class': 'col-md-12 xx' });
-                    setAttributes(seconddiv, { 'class': 'col-md-6 xx1' });
+                    setAttributes(seconddiv, { 'class': 'col-md-5 xx1' });
                     setAttributes(firstimg, { 'src': res[i]['IMG'], 'class': 'img-responsive xx11' });
                     setAttributes(thirddiv, { 'class': 'xx11' });
                     setAttributes(pdescription, { 'class': 'descriptioncase' });

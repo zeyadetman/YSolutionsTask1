@@ -506,7 +506,8 @@ function cityFunc() {
 }
 
 
-GetAllCategories();
+setTimeout(GetAllCategories(), 500);
+
 //not finished//
 function GetAllCategories() {
     console.log('22');
@@ -523,9 +524,13 @@ function GetAllCategories() {
             var res = JSON.parse(this.responseText)['AllCategories'];
             for (var i = 0; i < res.length; i++) {
                 var ex = document.createElement('option');
-                $("#inputinterests").append(ex);
+                var ex1 = document.createElement('option');
+                $("#inputinterests").append(ex1);
+                $("#inputeditinterests").append(ex);
                 setAttributes(ex, { 'value': res[i]['CategoryID'] });
+                setAttributes(ex1, { 'value': res[i]['CategoryID'] });
                 ex.innerHTML = res[i]['CategoryName'];
+                ex1.innerHTML = res[i]['CategoryName'];
             }
         }
     });
