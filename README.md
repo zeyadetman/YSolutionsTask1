@@ -8,18 +8,17 @@
 
 - [x] Following Design
 
-- [ ] Upload Cause
+- [x] Upload Cause
 
 - [x] Forgot Password
 
-- [ ] Send mail
+- [ ] mail
 
-- [ ] Search
+- [ ] Reviews
+ 
+- [x] Search
 
 - [x] Follow
 
 - [x] Unfollow
 
-- [ ] Twitter Log-in
-
-- [ ] Google+ Log-in
