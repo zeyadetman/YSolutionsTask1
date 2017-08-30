@@ -8,6 +8,16 @@ body {
     margin: 0 38px;
 }
 
+h5:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.box-profile {
+    visibility: hidden;
+    transition: visibility 2s ease-in-out;
+}
+
 .xx1 {
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
@@ -52,11 +62,16 @@ small {
 }
 
 .enMoney,
-.stat,
 .nnoj {
     font-family: 'Montserrat', sans-serif;
     color: rgb(252, 176, 64);
     font-size: 24;
+}
+
+.stat {
+    font-family: 'Montserrat', sans-serif;
+    color: #BEC3C7;
+    font-size: 20;
 }
 
 .amount,

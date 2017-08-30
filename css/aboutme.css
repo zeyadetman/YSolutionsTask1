@@ -93,17 +93,23 @@
 }
 
 .fa-times {
-    color: red;
+    color: #C1392B;
 }
 
 .fa-pencil-square-o {
-    color: green;
+    color: #2A80B9;
     padding-top: 1px;
     padding-left: 10px;
 }
 
+.fa-check {
+    color: #27AE61;
+    padding-left: 10px;
+}
+
 .fa-pencil-square-o:hover,
-.fa-times:hover {
+.fa-times:hover,
+.fa-check:hover {
     opacity: 0.8;
     cursor: pointer;
 }

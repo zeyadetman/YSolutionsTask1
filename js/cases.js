@@ -97,6 +97,7 @@ function filler() {
                 var controlbtns = document.createElement('div');
                 var remover = document.createElement('i');
                 var editor = document.createElement('i');
+                var complete = document.createElement('i');
                 $(firstdiv).append(seconddiv);
                 $(seconddiv).append(firstimg);
                 $(seconddiv).append(thirddiv);
@@ -110,8 +111,13 @@ function filler() {
                 $(thirddiv).append(spannoj);
                 $(thirddiv).append(pstatus);
                 $(thirddiv).append(spanstat);
-                $(controlbtns).append(remover);
-                $(controlbtns).append(editor);
+
+                if (ros[i]['status'] == 1) {
+                    $(controlbtns).append(remover);
+                    $(controlbtns).append(editor);
+                    $(controlbtns).append(complete);
+                }
+
                 setAttributes(firstdiv, { 'class': 'col-md-12 xx' });
                 setAttributes(seconddiv, { 'class': 'col-md-5 xx1', 'id': i });
                 setAttributes(firstimg, { 'src': ros[i]['IMG'], 'class': 'img-responsive xx11' });
@@ -122,10 +128,11 @@ function filler() {
                 setAttributes(pnoj, { 'class': 'noj' });
                 setAttributes(spannoj, { 'class': 'nnoj' });
                 setAttributes(pstatus, { 'class': 'status' });
-                setAttributes(spanstat, { 'class': 'stat' });
+                setAttributes(spanstat, { 'class': 'stat', 'id': `spanstat${ros[i]['CauseID']}` });
                 setAttributes(controlbtns, { 'class': 'col-md-6 xxw' });
-                setAttributes(remover, { 'class': 'fa fa-times fa-2x', 'aria-hidden': 'true', 'onclick': `removeyourcase('${ros[i]['CauseID']}',${i})` }); //--
-                setAttributes(editor, { 'class': 'fa fa-pencil-square-o fa-2x', 'aria-hidden': 'true', 'onclick': `edityourcase('${ros[i]['CauseID']}',${i})` })
+                setAttributes(remover, { 'class': 'fa fa-times fa-2x', 'aria-hidden': 'true', 'onclick': `removeyourcase('${ros[i]['CauseID']}',${i})`, 'id': `remover${ros[i]['CauseID']}` }); //--
+                setAttributes(editor, { 'class': 'fa fa-pencil-square-o fa-2x', 'aria-hidden': 'true', 'onclick': `edityourcase('${ros[i]['CauseID']}',${i})`, 'id': `editor${ros[i]['CauseID']}` });
+                setAttributes(complete, { 'class': 'fa fa-check fa-2x', 'aria-hidden': 'true', 'onclick': `compeletecase('${ros[i]['CauseID']}' , ${i})`, 'id': `compelete${ros[i]['CauseID']}` });
                 firsth4.innerHTML = ros[i]['CaseName'];
                 small.innerHTML = ros[i]['EndDate'];
                 pdescription.innerHTML = ros[i]['CaseDescription'];
@@ -134,7 +141,11 @@ function filler() {
                 pnoj.innerHTML = "Number of joins:";
                 spannoj.innerHTML = ros[i]['Numberofjoins'];
                 pstatus.innerHTML = "Status:";
-                spanstat.innerHTML = ros[i]['status'];
+                if (ros[i]['status'] == 1)
+                    spanstat.innerHTML = "Not Compelete";
+                else
+                    spanstat.innerHTML = "Compelete";
+
             }
 
         }
@@ -144,6 +155,35 @@ function filler() {
     xhr.setRequestHeader("content-type", "application/json");
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.setRequestHeader("postman-token", "066dfb0a-6395-5495-8b2b-c1e60332f81f");
+
+    xhr.send(data);
+}
+
+
+function compeletecase(caseid, iidd) {
+    var data = JSON.stringify({
+        "CauseID": caseid,
+        "ActionType": "2"
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            if (JSON.parse(this.responseText)['IsSuccess'] == true) {
+                $(`#remover${caseid}`).css("display", "none");
+                $(`#editor${caseid}`).css("display", "none");
+                $(`#compelete${caseid}`).css("display", "none");
+                $(`#spanstat${caseid}`).html('Compelete');
+            }
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/Case/DeleteCause");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "0d4089df-d9be-6f79-01c8-539996ee08f4");
 
     xhr.send(data);
 }

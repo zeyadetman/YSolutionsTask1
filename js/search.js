@@ -274,6 +274,7 @@ function search() {
                     setAttributes(img, { 'class': 'img-responsive img-circle img-bordered-sm center-block', 'src': JSON.parse(this.responseText)['SearchedPepole'][i]['ImgURL'] });
                     setAttributes(address, { 'class': 'text-center' });
                     name.setAttribute('class', 'text-center');
+                    name.setAttribute('onclick', `updateprofilesec('${JSON.parse(this.responseText)['SearchedPepole'][i]['User_ID']}')`);
                     name.innerHTML = JSON.parse(this.responseText)['SearchedPepole'][i]['Name'];
                     var btnck = document.createElement('div');
                     child.appendChild(btnck);
@@ -318,9 +319,18 @@ function search() {
                     var spannoj = document.createElement('span');
                     var pstatus = document.createElement('p');
                     var spanstat = document.createElement('span');
+
+                    var remover = document.createElement('i');
+                    var editor = document.createElement('i');
+                    var complete = document.createElement('i');
+
+                    var controlbtns1 = document.createElement('div');
+
+
                     $(firstdiv).append(seconddiv);
                     $(seconddiv).append(firstimg);
                     $(seconddiv).append(thirddiv);
+                    $(seconddiv).append(controlbtns1); //--                    
                     $(thirddiv).append(firsth4);
                     $(thirddiv).append(small);
                     $(thirddiv).append(pdescription);
@@ -330,6 +340,13 @@ function search() {
                     $(thirddiv).append(spannoj);
                     $(thirddiv).append(pstatus);
                     $(thirddiv).append(spanstat);
+                    console.log(res, res[i]['status'], res[i]['IsOwner']);
+                    if (res[i]['status'] == 1 && res[i]['IsOwner']) {
+                        $(controlbtns1).append(remover);
+                        $(controlbtns1).append(editor);
+                        $(controlbtns1).append(complete);
+                    }
+
                     setAttributes(firstdiv, { 'class': 'col-md-12 xx' });
                     setAttributes(seconddiv, { 'class': 'col-md-5 xx1' });
                     setAttributes(firstimg, { 'src': res[i]['IMG'], 'class': 'img-responsive xx11' });
@@ -341,6 +358,11 @@ function search() {
                     setAttributes(spannoj, { 'class': 'nnoj' });
                     setAttributes(pstatus, { 'class': 'status' });
                     setAttributes(spanstat, { 'class': 'stat' });
+
+                    setAttributes(remover, { 'class': 'fa fa-times fa-2x', 'aria-hidden': 'true', 'onclick': `removeyourcase('${res[i]['CauseID']}',${i})` }); //--
+                    setAttributes(editor, { 'class': 'fa fa-pencil-square-o fa-2x', 'aria-hidden': 'true', 'onclick': `edityourcase('${res[i]['CauseID']}',${i})` });
+                    setAttributes(complete, { 'class': 'fa fa-check fa-2x', 'aria-hidden': 'true', 'onclick': `compeletecase('${res[i]['CauseID']}' , ${i})` });
+
                     firsth4.innerHTML = res[i]['CaseName'];
                     small.innerHTML = res[i]['EndDate'];
                     pdescription.innerHTML = res[i]['CaseDescription'];
@@ -370,4 +392,76 @@ function search() {
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+var useee = '';
+
+function updateprofilesec(iddd) {
+    useee = iddd;
+    var data = JSON.stringify({
+        "User_ID": iddd
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            var userdet = JSON.parse(this.responseText);
+            $(".profile-username").html(userdet['Name']);
+            $(".usorgender").html(userdet['Gender']);
+            $(".addressuosr").html(userdet['Address']);
+            $(".usormail").html(userdet['EMail']);
+            $(".MobilefNumber").html(userdet['MobileNumber']);
+            $(".profile-user-img").attr("src", userdet['ImgURL']);
+            $(".profile-user-img").css("width", "170px");
+            $(".profile-user-img").css("height", "170px");
+            $(".box-profile").css("visibility", "visible");
+
+
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/User/UserDetails");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "52d9b351-29db-e32a-27a6-7e360d0b70e9");
+
+    xhr.send(data);
+}
+
+
+function sendeee() {
+    console.log(useee, originalid, $('#messagebody1').val());
+    var data = JSON.stringify({
+        "User_ID": originalid,
+        "ToID": useee,
+        "MSGBody": $('#messagebody1').val()
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+            console.log(JSON.parse(this.responseText));
+            var wxq = JSON.parse(this.responseText);
+            if (wxq['IsSuccess'] == true) {
+                $("#aaaesult").html('Message Sent');
+                setTimeout(function() {
+                    location.reload();
+                }, 3000);
+            } else {
+                $("#aaaesult").html('Message didn\'t Send');
+            }
+
+        }
+    });
+
+    xhr.open("POST", "http://yakensolution.cloudapp.net/Charity/Api/Messeging/SendMassege");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "71e2d60f-b7b7-f17b-7d79-056887b72cb7");
+
+    xhr.send(data);
 }

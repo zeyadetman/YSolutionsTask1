@@ -173,16 +173,31 @@
     padding-bottom: 10px;
 }
 
-.form-group input,
-.form-group option,
-.form-group select {
+#settings .form-group input,
+#settings .form-group option,
+#settings .form-group select,
+#settings .form-group textarea {
     border-radius: 5px;
     color: black;
 }
 
+.form-group input,
+.form-group option,
+.form-group select,
+.form-group textarea {
+    border-radius: 5px;
+    color: black;
+}
+
+#messagebody1 {
+    border-radius: 5px;
+    color: white;
+}
+
 .form-group input:focus,
 .form-group option:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
     border-color: orange;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px orange;
 }

@@ -151,10 +151,10 @@ function listsfiller() {
             //    console.log(followinglist[i]);
             userDetails(followinglist[i], 'FollowingList');
         }
-
+        aboutme(originalid);
         $("#followerlistcountermain").html(`Followerlist ${followerslist.length}`);
         $("#followinglistcountermain").html(`Followinglist ${followinglist.length}`);
-        aboutme(originalid);
+
     }, 300);
 }
 

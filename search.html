@@ -33,7 +33,7 @@
     <!-- Favicon
   ================================================== -->
     <link rel="shortcut icon" type="image/png" href="../../dist/img/favicon.png">
-
+    <link rel="stylesheet" href="../../css/aboutme.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -379,7 +379,6 @@
                 </span>
               </a>
                             </li>
-                            <li><a href="compose.html">Compose</a></li>
                             <li><a href="read-mail.html">Read</a></li>
                         </ul>
                     </li>
@@ -411,49 +410,47 @@
                         <!-- Profile Image -->
                         <div class="box box-primary">
                             <div class="box-body box-profile">
-                                <img class="profile-user-img img-responsive img-circle" src="../../dist/img/avatar2.png" alt="User profile picture">
+                                <img class="profile-user-img img-responsive img-circle" alt="User profile picture">
 
-                                <h3 class="profile-username text-center user-name">ahmed ammar</h3>
-
-                                <p class="text-muted text-center">UI/UX design</p>
+                                <h3 class="profile-username text-center"></h3>
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Followers</b>
-                                        <p class="pull-right followers-count">2</p>
+                                        <b>Gender</b>
+                                        <p class="pull-right uosrgender"></p>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Following</b>
-                                        <p class="pull-right following-count">3</p>
+                                        <b>Mobile Number</b>
+                                        <p class="pull-right MobilefNumber"></p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Address</b>
+                                        <p class="pull-right addressuosr"></p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Email</b>
+                                        <p class="pull-right usormail"></p>
                                     </li>
                                 </ul>
 
-                                <a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target=".bs-example2-modal"><b>Upload cause</b></a>
-                                <div class="modal fade bs-example2-modal">
+                                <a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target=".sendmessage"><b>Send Message</b></a>
+                                <div class="modal fade sendmessage">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button class="close" data-dismiss="modal"><span>×</span></button>
-                                                <h3 class="modal-title">create cause</h3>
+                                                <h3 class="modal-title">Send Message</h3>
                                             </div>
                                             <div class="modal-body">
                                                 <form>
                                                     <div class="form-group">
-                                                        <div class="text-center">
-                                                            <img src="http://placehold.it/150x100" class="avatar " alt="avatar">
-                                                            <h6>Upload a different photo...</h6>
-                                                            <div class="col-sm-4 col-sm-offset-4">
-                                                                <input type="file" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <textarea class="form-control" rows="5" id="comment" placeholder="Write Status" style="margin-top: 10px; background: rgba(0,0,0,0.7);"></textarea>
+                                                        <textarea class="form-control" rows="5" id="messagebody1" placeholder="Write Your Message" style="margin-top: 10px; background: rgba(0,0,0,0.7);"></textarea>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button class="btn btn-default">Post</button>
+                                                <p class="text-center block-center" style="color:#dd4b39; font-size:20px" id="aaaesult"></p>
+                                                <button class="btn btn-default" onclick="sendeee()">Send</button>
                                             </div>
                                         </div>
                                     </div>
@@ -466,46 +463,7 @@
 
 
 
-                        <!-- About Me Box -->
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">About Me</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <strong><i class="fa fa-book margin-r-5"></i>Education</strong>
 
-                                <p class="text-muted" id="edu">
-
-                                </p>
-
-                                <hr>
-
-                                <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-
-                                <p class="text-muted">Mahalla ,Egypt</p>
-
-                                <hr>
-
-                                <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-
-                                <p>
-                                    <span class="label label-danger">UI Design</span>
-                                    <span class="label label-success">Coding</span>
-                                    <span class="label label-info">Javascript</span>
-                                    <span class="label label-warning">PSD</span>
-                                    <span class="label label-primary">Jquery</span>
-                                </p>
-
-                                <hr>
-
-                                <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
                     </div>
                     <!-- /.col -->
                     <div id="searchresultshow">
@@ -549,359 +507,78 @@
         <strong>Copyright © 2016 <a href="http://almsaeedstudio.com">Sunbuka</a>.</strong> .
     </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-            <li class="active"><a href="#control-sidebar-theme-demo-options-tab" data-toggle="tab"><i class="fa fa-wrench"></i></a></li>
-            <li class="active"><a href="#control-sidebar-theme-demo-options-tab" data-toggle="tab"><i class="fa fa-wrench"></i></a></li>
-            <li class="active"><a href="#control-sidebar-theme-demo-options-tab" data-toggle="tab"><i class="fa fa-wrench"></i></a></li>
-            <li class="active"><a href="#control-sidebar-theme-demo-options-tab" data-toggle="tab"><i class="fa fa-wrench"></i></a></li>
-            <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <!-- Home tab content -->
-            <div class="tab-pane" id="control-sidebar-home-tab">
-                <h3 class="control-sidebar-heading">Recent Activity</h3>
-                <ul class="control-sidebar-menu">
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+    <!-- Stats tab content -->
+    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+    <!-- /.tab-pane -->
+    <!-- Settings tab content -->
+    <div class="tab-pane" id="control-sidebar-settings-tab">
+        <form method="post">
+            <h3 class="control-sidebar-heading">General Settings</h3>
 
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                <p>Will be 23 on April 24th</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon fa fa-user bg-yellow"></i>
-
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                                <p>New phone +1(800)555-1234</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                                <p>nora@example.com</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                                <p>Execution time 5 seconds</p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.control-sidebar-menu -->
-            </div>
-            <div id="control-sidebar-theme-demo-options-tab" class="tab-pane active">
-                <div>
-                    <h4 class="control-sidebar-heading">Layout Options</h4>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="fixed" class="pull-right"> Fixed layout</label>
-                        <p>Activate the fixed layout. You can't use fixed and boxed layouts together</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" class="pull-right"> Boxed Layout</label>
-                        <p>Activate the boxed layout</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" class="pull-right"> Toggle Sidebar</label>
-                        <p>Toggle the left sidebar's state (open or collapse)</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-enable="expandOnHover" class="pull-right"> Sidebar Expand on Hover</label>
-                        <p>Let the sidebar mini expand on hover</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-controlsidebar="control-sidebar-open" class="pull-right"> Toggle Right Sidebar Slide</label>
-                        <p>Toggle between slide over content and push content effects</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-sidebarskin="toggle" class="pull-right"> Toggle Right Sidebar Skin</label>
-                        <p>Toggle between dark and light skins for the right sidebar</p>
-                    </div>
-                    <h4 class="control-sidebar-heading">Skins</h4>
-                    <ul class="list-unstyled clearfix">
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Blue</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Purple</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Green</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Red</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="control-sidebar-theme-demo-options-tab" class="tab-pane active">
-                <div>
-                    <h4 class="control-sidebar-heading">Layout Options</h4>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="fixed" class="pull-right"> Fixed layout</label>
-                        <p>Activate the fixed layout. You can't use fixed and boxed layouts together</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" class="pull-right"> Boxed Layout</label>
-                        <p>Activate the boxed layout</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" class="pull-right"> Toggle Sidebar</label>
-                        <p>Toggle the left sidebar's state (open or collapse)</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-enable="expandOnHover" class="pull-right"> Sidebar Expand on Hover</label>
-                        <p>Let the sidebar mini expand on hover</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-controlsidebar="control-sidebar-open" class="pull-right"> Toggle Right Sidebar Slide</label>
-                        <p>Toggle between slide over content and push content effects</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-sidebarskin="toggle" class="pull-right"> Toggle Right Sidebar Skin</label>
-                        <p>Toggle between dark and light skins for the right sidebar</p>
-                    </div>
-                    <h4 class="control-sidebar-heading">Skins</h4>
-                    <ul class="list-unstyled clearfix">
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Blue</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Purple</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Green</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Red</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="control-sidebar-theme-demo-options-tab" class="tab-pane active">
-                <div>
-                    <h4 class="control-sidebar-heading">Layout Options</h4>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="fixed" class="pull-right"> Fixed layout</label>
-                        <p>Activate the fixed layout. You can't use fixed and boxed layouts together</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" class="pull-right"> Boxed Layout</label>
-                        <p>Activate the boxed layout</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" class="pull-right"> Toggle Sidebar</label>
-                        <p>Toggle the left sidebar's state (open or collapse)</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-enable="expandOnHover" class="pull-right"> Sidebar Expand on Hover</label>
-                        <p>Let the sidebar mini expand on hover</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-controlsidebar="control-sidebar-open" class="pull-right"> Toggle Right Sidebar Slide</label>
-                        <p>Toggle between slide over content and push content effects</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-sidebarskin="toggle" class="pull-right"> Toggle Right Sidebar Skin</label>
-                        <p>Toggle between dark and light skins for the right sidebar</p>
-                    </div>
-                    <h4 class="control-sidebar-heading">Skins</h4>
-                    <ul class="list-unstyled clearfix">
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Blue</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Purple</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Green</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Red</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="control-sidebar-theme-demo-options-tab" class="tab-pane active">
-                <div>
-                    <h4 class="control-sidebar-heading">Layout Options</h4>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="fixed" class="pull-right"> Fixed layout</label>
-                        <p>Activate the fixed layout. You can't use fixed and boxed layouts together</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" class="pull-right"> Boxed Layout</label>
-                        <p>Activate the boxed layout</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" class="pull-right"> Toggle Sidebar</label>
-                        <p>Toggle the left sidebar's state (open or collapse)</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-enable="expandOnHover" class="pull-right"> Sidebar Expand on Hover</label>
-                        <p>Let the sidebar mini expand on hover</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-controlsidebar="control-sidebar-open" class="pull-right"> Toggle Right Sidebar Slide</label>
-                        <p>Toggle between slide over content and push content effects</p>
-                    </div>
-                    <div class="form-group"><label class="control-sidebar-subheading"><input type="checkbox" data-sidebarskin="toggle" class="pull-right"> Toggle Right Sidebar Skin</label>
-                        <p>Toggle between dark and light skins for the right sidebar</p>
-                    </div>
-                    <h4 class="control-sidebar-heading">Skins</h4>
-                    <ul class="list-unstyled clearfix">
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Blue</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Purple</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Green</p>
-                        </li>
-                        <li style="float:left; width: 33.33333%; padding: 5px;">
-                            <a href="javascript:void(0);" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
-                                <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
-                                <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
-                            </a>
-                            <p class="text-center no-margin">Red</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /.tab-pane -->
-            <!-- Stats tab content -->
-            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-            <!-- /.tab-pane -->
-            <!-- Settings tab content -->
-            <div class="tab-pane" id="control-sidebar-settings-tab">
-                <form method="post">
-                    <h3 class="control-sidebar-heading">General Settings</h3>
-
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
+            <div class="form-group">
+                <label class="control-sidebar-subheading">
               Report panel usage
               <input type="checkbox" class="pull-right" checked="">
             </label>
 
-                        <p>
-                            Some information about this general settings option
-                        </p>
-                    </div>
-                    <!-- /.form-group -->
+                <p>
+                    Some information about this general settings option
+                </p>
+            </div>
+            <!-- /.form-group -->
 
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
+            <div class="form-group">
+                <label class="control-sidebar-subheading">
               Allow mail redirect
               <input type="checkbox" class="pull-right" checked="">
             </label>
 
-                        <p>
-                            Other sets of options are available
-                        </p>
-                    </div>
-                    <!-- /.form-group -->
+                <p>
+                    Other sets of options are available
+                </p>
+            </div>
+            <!-- /.form-group -->
 
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
+            <div class="form-group">
+                <label class="control-sidebar-subheading">
               Expose author name in posts
               <input type="checkbox" class="pull-right" checked="">
             </label>
-                        <p>
-                            Allow the user to show his name in blog posts
-                        </p>
-                    </div>
-                    <!-- /.form-group -->
+                <p>
+                    Allow the user to show his name in blog posts
+                </p>
+            </div>
+            <!-- /.form-group -->
 
-                    <h3 class="control-sidebar-heading">Chat Settings</h3>
+            <h3 class="control-sidebar-heading">Chat Settings</h3>
 
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
+            <div class="form-group">
+                <label class="control-sidebar-subheading">
               Show me as online
               <input type="checkbox" class="pull-right" checked="">
             </label>
-                    </div>
-                    <!-- /.form-group -->
+            </div>
+            <!-- /.form-group -->
 
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
+            <div class="form-group">
+                <label class="control-sidebar-subheading">
               Turn off notifications
               <input type="checkbox" class="pull-right">
             </label>
-                    </div>
-                    <!-- /.form-group -->
+            </div>
+            <!-- /.form-group -->
 
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
+            <div class="form-group">
+                <label class="control-sidebar-subheading">
               Delete chat history
               <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
             </label>
-                    </div>
-                    <!-- /.form-group -->
-                </form>
             </div>
-            <!-- /.tab-pane -->
-        </div>
+            <!-- /.form-group -->
+        </form>
+    </div>
+    <!-- /.tab-pane -->
+    </div>
     </aside>
     <!-- /.control-sidebar -->
     <!-- Add the sidebar's background. This div must be placed
