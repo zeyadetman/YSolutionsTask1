@@ -8,14 +8,12 @@
 
 - [x] Following Design
 
-- [x] Upload Cause
+- [x] cases
 
 - [x] Forgot Password
 
-- [ ] mail
+- [x] mail
 
-- [ ] Reviews
- 
 - [x] Search
 
 - [x] Follow
